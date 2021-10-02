@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "27efc722-d612-425c-8b57-bdcfb3ade25a",
+		"name": "API para Alkemy de Francisco Olivero",
+		"description": "# Introduction\nEs una api donde manipula los registros de la base de datos : pelis\n\n# Overview\nDebe crear una base de datos propia, en la ruta C:\\EntrevistaTecnica\\src\\models\\index.js debe modificar los datos que estan escritos con datos personales para poder conectarse. \nUna vez conectado a su base de datos debe iniciar el servidor con \"npm run dev\" y despues ejecutar los seeders con el comando \"npx sequelize db:seed:all\" para cargar la base de datos y si salio todo bien podras usar los endpoints.\n\n\n# Authentication\nTODAS LAS RUTAS TIENE AUTENTIFICACION. \nLo primero que debe hacer es crearse un usuario y luego logearse con los endpoints correspondientes. Este ultimo endpoints le devolvera un token que debe usarlo para las demas rutas. Se coloca en Bearer Token y estas logeado\n\n# Error Codes\nWhat errors and status codes can a user expect?\nNo hice control de errores ya que no llegue con el tiempo.\nAsi que falto la validaciones, el control de errores, los email y los tests\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/auth/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"francisco\",\n\t\"email\" : \"francisco@gmail.com\",\n\t\"password\": \"francisco123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"register"
+					]
+				},
+				"description": "Este endpoints es para registrar al usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\" : \"francisco@gmail.com\",\n\t\"password\": \"francisco123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "Este endpoints es para inicia sesion y asi obtener el token de seguridad"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/characters",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/characters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"characters"
+					]
+				},
+				"description": "Este endpoints te devuelve los personajes "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/characters?",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/characters?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"characters"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": ""
+						}
+					]
+				},
+				"description": "Este endpoints filtra por query un personaje , los campos de query son name, age y movies y te devuelve el detalle del personaje"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/characters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"imagen\": \"http\",\n    \"nombre\": \"robertA\",\n    \"edad\": 45,\n    \"peso\": 80,\n    \"historia\": \"asdasdasd\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/characters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"characters"
+					]
+				},
+				"description": "Este enpoints inserta un personaje en la DB"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/characters/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"imagen\": \"http\",\n    \"nombre\": \"robertA\",\n    \"edad\": 45,\n    \"peso\": 80,\n    \"historia\": \"asdasdasd\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/characters/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"characters",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Este endpoints hace un update de un personaje en la DB"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/characters/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/characters/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"characters",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Este endpoints elimina un personaje en la DB"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/movies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movies"
+					]
+				},
+				"description": "Este endpoints te devuelve las peliculas"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/movies?",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/movies?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": ""
+						}
+					]
+				},
+				"description": "Este endpoints filtra y ordena por query una pelicula , los campos de query son name, genre(idGenero) y order(ASC|DESC) y te devuelve el detalle del personaje"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/movies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n  \n    \"imagen\": \"foto_portada\",\n    \"titulo\": \"Harry potter\",\n    \"fechaCreacion\": \"1970-01-01T00:00:02.321Z\",\n    \"calificacion\": 4\n \n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movies"
+					]
+				},
+				"description": "Este enpoints inserta una pelicula en la DB"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/movies:/id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n  \n    \"imagen\": \"foto_portada\",\n    \"titulo\": \"Harry psadoasdatter\",\n    \"fechaCreacion\": \"1970-01-01T00:00:02.321Z\",\n    \"calificacion\": 4\n \n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/movies:/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movies:",
+						"id"
+					]
+				},
+				"description": "Este endpoints hace un update de una peliculaen la DB"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/movies/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/movies/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movies",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Este endpoints elimina una pelicula en la DB"
+			},
+			"response": []
+		}
+	]
+}
